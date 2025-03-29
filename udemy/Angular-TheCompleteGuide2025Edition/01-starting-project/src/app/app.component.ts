@@ -18,13 +18,15 @@ export class AppComponent {
   selectedUserId = 'u1';
 
   get selectedUser() {
-    const user = this.users.find(user => user.id === this.selectedUserId)!;
-    console.log("Selected user: " + user.name);
+    const user = this.users.find(user => user.id === this.selectedUserId);
+    if (!user) {
+      return { name: undefined };
+    }
     return user;
   }
 
   onUserSelected(id: string) {
-    console.log("User selected APP: " + id);
+    // console.log("User selected APP: " + id);
     this.selectedUserId = id;
   }
 }
